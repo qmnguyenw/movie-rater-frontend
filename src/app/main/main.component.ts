@@ -9,6 +9,7 @@ import { ApiService } from '../api.service';
 export class MainComponent implements OnInit {
 
   movies: any = [];
+  selectedMovie = null;
 
   constructor(
     private apiService: ApiService
@@ -21,6 +22,11 @@ export class MainComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  selectMovie(movie) {
+    this.selectedMovie = movie;
+    // console.log('selectedMovie', this.selectedMovie);
   }
 
 }

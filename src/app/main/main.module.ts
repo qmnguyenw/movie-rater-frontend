@@ -7,6 +7,8 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieFormComponent } from './movie-form/movie-form.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 import { ApiService } from '../api.service';
 
 const routes: Routes = [
@@ -23,6 +25,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes, ),
+    AngularFontAwesomeModule,
   ],
   exports: [
     RouterModule,

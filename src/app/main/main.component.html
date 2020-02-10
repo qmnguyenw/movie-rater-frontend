@@ -1,7 +1,4 @@
 <div class="layout">
-    <app-movie-list [movies]="movies"></app-movie-list>
-    <app-movie-detail></app-movie-detail>
-    <!-- <div *ngFor="let movie of movies">
-        <h3>{{ movie.title }}</h3>
-    </div> -->
+    <app-movie-list [movies]="movies" (selectMovie)="selectMovie($event)"></app-movie-list>
+    <app-movie-detail [movie]="selectedMovie"></app-movie-detail>
 </div>
