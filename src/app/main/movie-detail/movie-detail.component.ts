@@ -31,7 +31,7 @@ export class MovieDetailComponent implements OnInit {
     );
   }
 
-  // get data for movie detail after rating movie
+  // update data of movie detail after rating movie
   getDetails() {
     this.apiService.getMovie(this.movie.id).subscribe(
       (movie: Movie) => {
