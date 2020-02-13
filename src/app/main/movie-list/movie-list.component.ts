@@ -18,18 +18,22 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit() { }
 
+  // send mouse click event to main
   movieClicked(movie: Movie) {
     this.selectMovie.emit(movie);
   }
 
+  // send click edit event to main
   editMovie(movie: Movie) {
     this.editedMovie.emit(movie);
   }
 
+  // send click add event to main
   addMovie() {
     this.addedMovie.emit();
   }
 
+  // send click delete event to main
   deleteMovie(movie: Movie) {
     this.deletedMovie.emit(movie);
   }

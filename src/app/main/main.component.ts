@@ -22,8 +22,10 @@ export class MainComponent implements OnInit {
     private router: Router,
   ) { }
 
+  // check authentication before show
   ngOnInit() {
     const mrToken = this.cookieService.get('mr-token');
+    // redirect if not login
     if (!mrToken) {
       this.router.navigate(['/auth']);
     } else {
@@ -36,26 +38,31 @@ export class MainComponent implements OnInit {
     }
   }
 
+  // logout function
   logout() {
     this.cookieService.delete('mr-token');
     this.router.navigate(['/auth']);
   }
 
+  // click choose 1 movie in list
   selectMovie(movie: Movie) {
     this.selectedMovie = movie;
     this.editMovie = null;
   }
 
+  // click edit 1 movie
   editedMovie(movie: Movie) {
     this.selectedMovie = null;
     this.editMovie = movie;
   }
 
+  // click add movie
   addMovie() {
     this.selectedMovie = null;
     this.editMovie = { title: '', description: '' };
   }
 
+  // click delete movie
   deletedMovie(movie: Movie) {
     this.apiService.deleteMovie(movie.id).subscribe(
       data => {
@@ -65,11 +72,13 @@ export class MainComponent implements OnInit {
     );
   }
 
+  // after add movie
   movieCreated(movie: Movie) {
     this.movies.push(movie);
     this.editMovie = null; // add more to disappear edit panel
   }
 
+  // after edit movie
   movieUpdated(movie: Movie) {
     const index = this.movies.findIndex(mov => mov.id === movie.id);
     if (index >= 0) {

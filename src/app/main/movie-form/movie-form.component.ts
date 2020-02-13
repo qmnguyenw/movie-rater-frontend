@@ -32,14 +32,16 @@ export class MovieFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  // function control submit form
   saveForm() {
+    // edit function
     if (this.id) {
       this.apiService.editMovie(this.id,
         this.movieForm.value.title, this.movieForm.value.description).subscribe(
           (result: Movie) => this.movieUpdated.emit(result),
           error => console.error()
         );
-    } else {
+    } else { // create function
       this.apiService.createMovie(
         this.movieForm.value.title, this.movieForm.value.description).subscribe(
           (result: Movie) => this.movieCreated.emit(result),
@@ -48,6 +50,7 @@ export class MovieFormComponent implements OnInit {
     }
   }
 
+  // function not allow submit form if lack of title, description
   formDisable() {
     if (this.movieForm.value.title.length &&
       this.movieForm.value.description.length) {

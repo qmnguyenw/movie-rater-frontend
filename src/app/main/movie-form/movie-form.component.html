@@ -1,10 +1,10 @@
 <form [formGroup]="movieForm" (ngSubmit)="saveForm()">
-    <label>Title</label><br/>
-    <input type="text" formControlName="title"/><br/>
-    <label>Description</label><br/>
-    <textarea type="text" formControlName="description"></textarea><br/>
-    <button type="submit" [disabled]="formDisable()">
-        <span *ngIf="id">Update</span>
-        <span *ngIf="!id">Create</span>
-    </button>
+  <label>Title</label><br />
+  <input type="text" formControlName="title" /><br />
+  <label>Description</label><br />
+  <textarea type="text" formControlName="description"></textarea><br />
+  <button type="submit" [disabled]="formDisable()">
+    <span *ngIf="id">Update</span>
+    <span *ngIf="!id">Create</span>
+  </button>
 </form>

@@ -29,6 +29,7 @@ export class AuthComponent implements OnInit {
     private router: Router,
   ) { }
 
+  // check if has cookie redirect
   ngOnInit() {
     const mrToken = this.cookieService.get('mr-token');
     if (mrToken) {
@@ -36,6 +37,7 @@ export class AuthComponent implements OnInit {
     }
   }
 
+  // function control when submit form
   saveForm() {
     if (!this.registerMode) {
       this.loginUser();
@@ -44,10 +46,10 @@ export class AuthComponent implements OnInit {
     }
   }
 
+  // function login user
   loginUser() {
     this.apiService.loginUser(this.authForm.value).subscribe(
       (result: TokenObj) => {
-        // console.log(result),
         this.cookieService.set('mr-token', result.token);
         this.router.navigate(['/movies']);
       },
@@ -55,6 +57,7 @@ export class AuthComponent implements OnInit {
     );
   }
 
+  // function register user
   registerUser() {
     this.apiService.registerUser(this.authForm.value).subscribe(
       result => {
@@ -62,5 +65,15 @@ export class AuthComponent implements OnInit {
       },
       error => console.error()
     );
+  }
+
+  // function not allow submit form if lack of username, password
+  formDisable() {
+    if (this.authForm.value.username.length &&
+      this.authForm.value.password.length) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

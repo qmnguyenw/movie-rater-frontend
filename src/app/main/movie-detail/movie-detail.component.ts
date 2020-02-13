@@ -20,10 +20,12 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  // hover star when mouse go around
   rateHover(rate: number) {
     this.rateHovered = rate;
   }
 
+  // submit rating of click 
   rateClicked(rate: number) {
     this.apiService.rateMovie(rate, this.movie.id).subscribe(
       result => this.getDetails(),
