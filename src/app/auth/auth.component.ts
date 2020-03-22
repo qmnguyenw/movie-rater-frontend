@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { ApiService } from '../api.service';
 
+// token authentication
 interface TokenObj {
   token: string;
 }
@@ -16,6 +17,7 @@ interface TokenObj {
 })
 export class AuthComponent implements OnInit {
 
+  // declare authentication form
   authForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
@@ -23,14 +25,16 @@ export class AuthComponent implements OnInit {
 
   registerMode = false;
 
+  // create constructor
   constructor(
     private apiService: ApiService,
     private cookieService: CookieService,
     private router: Router,
   ) { }
 
-  // check if has cookie redirect
+  // on start
   ngOnInit() {
+    // check if has cookie redirect
     const mrToken = this.cookieService.get('mr-token');
     if (mrToken) {
       this.router.navigate(['/movies']);

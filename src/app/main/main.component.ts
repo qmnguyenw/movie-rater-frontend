@@ -22,10 +22,10 @@ export class MainComponent implements OnInit {
     private router: Router,
   ) { }
 
-  // check authentication before show
+  // on start check authentication before show
   ngOnInit() {
     const mrToken = this.cookieService.get('mr-token');
-    // redirect if not login
+    // redirect login if not login
     if (!mrToken) {
       this.router.navigate(['/auth']);
     } else {

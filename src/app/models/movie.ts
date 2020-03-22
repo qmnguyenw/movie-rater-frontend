@@ -1,3 +1,4 @@
+// create model Movie and its attributes
 export interface Movie {
   id: number;
   title: string;
